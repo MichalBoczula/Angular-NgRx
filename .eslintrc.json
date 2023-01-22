@@ -14,7 +14,10 @@
         ],
         "createDefaultProgram": true
       },
-      "plugins": ["rxjs", "rxjs-angular"],
+      "plugins": [
+        "rxjs",
+        "rxjs-angular"
+      ],
       "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
@@ -39,11 +42,15 @@
         ],
         "rxjs/no-implicit-any-catch": [
           "off",
-          { "allowExplicitAny": true }
+          {
+            "allowExplicitAny": true
+          }
         ],
         "rxjs/no-sharereplay": [
           "off",
-          { "allowConfig": true }
+          {
+            "allowConfig": true
+          }
         ],
         "rxjs/no-unbound-methods": [
           "off"
@@ -58,6 +65,14 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:ngrx/recommended"
+      ]
     }
   ]
 }

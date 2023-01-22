@@ -8,6 +8,8 @@ import { ProductDetailComponent } from './product-list-alt/product-detail.compon
 
 import { SharedModule } from '../shared/shared.module';
 import { ProductListAltComponent } from './product-list-alt/product-list-alt.component';
+import { StoreModule } from '@ngrx/store';
+import { productReducer } from './state/product.reducer';
 
 @NgModule({
   imports: [
@@ -22,7 +24,8 @@ import { ProductListAltComponent } from './product-list-alt/product-list-alt.com
         path: 'alternate',
         component: ProductShellComponent
       }
-    ])
+    ]),
+    StoreModule.forFeature('products', productReducer)
   ],
   declarations: [
     ProductListComponent,

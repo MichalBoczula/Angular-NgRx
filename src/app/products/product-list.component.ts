@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject, catchError, combineLatest, EMPTY, map, startWith } from 'rxjs';
 import { ProductCategory } from '../product-categories/product-category';
 import { ProductCategoryService } from '../product-categories/product-category.service';
@@ -16,6 +17,8 @@ export class ProductListComponent
   pageTitle = 'Product List';
   errorMessage = '';
   categories: ProductCategory[] = [];
+  displayCode!: boolean;
+
   private categorySelectedSubject = new BehaviorSubject<number>(0);
   categorySelectedAction$ = this.categorySelectedSubject.asObservable();
 
@@ -43,7 +46,8 @@ export class ProductListComponent
   // sub!: Subscription don't need because we have async obsrvable in pipe
 
   constructor(private productService: ProductService,
-    private productCategoryService: ProductCategoryService) { }
+    private productCategoryService: ProductCategoryService,
+    private store: Store<any>) { }
 
   // declaration of observable products are assigned to product$ variable
   // proceduralApproach can be still useful for reactive programming
