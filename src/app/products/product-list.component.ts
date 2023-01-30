@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { BehaviorSubject, catchError, combineLatest, EMPTY, map, startWith } from 'rxjs';
 import { ProductCategory } from '../product-categories/product-category';
 import { ProductCategoryService } from '../product-categories/product-category.service';
+import { State } from '../state/app.state';
 import { ProductService } from './product.service';
 
 @Component({
@@ -47,7 +48,7 @@ export class ProductListComponent
 
   constructor(private productService: ProductService,
     private productCategoryService: ProductCategoryService,
-    private store: Store<any>) { }
+    private store: Store<State>) { }
 
   // declaration of observable products are assigned to product$ variable
   // proceduralApproach can be still useful for reactive programming

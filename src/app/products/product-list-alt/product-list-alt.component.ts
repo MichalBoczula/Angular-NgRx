@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { catchError, EMPTY, Subject } from 'rxjs';
 import { ProductService } from '../product.service';
+import { getShowProductCode, State } from '../state/product.reducer';
 
 @Component({
   selector: 'pm-product-list',
@@ -28,17 +29,14 @@ export class ProductListAltComponent implements OnInit
   selectedProduct$ = this.productService.selectedProduct$;
 
   constructor(private productService: ProductService,
-    private store: Store<any>) { }
+    private store: Store<State>) { }
 
 
   ngOnInit(): void {
-    this.store.select('products').subscribe(
-      products => {
-        if (products) {
-          this.displayCode = products.showProductCode;
-        }
-      }
-    )
+    this.store.select(getShowProductCode)
+      .subscribe(showProductCode =>
+        this.displayCode = showProductCode
+      )
   }
 
   //the same issue like in list component
