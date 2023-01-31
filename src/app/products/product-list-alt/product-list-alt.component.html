@@ -7,7 +7,7 @@
     <!-- used async (automaticlly subscribe observable) pipe insted of approach with subscribe and unsubscribe proceduralApproach-->
     <div class="list-group">
       <button type="button" class="list-group-item" *ngFor="let product of products"
-        [ngClass]="{ active: product?.id === (selectedProduct$ | async)?.id }" (click)="checkChanged()">
+        [ngClass]="{ active: product?.id === (selectedProduct$ | async)?.id }" (click)="onSelected(1)">
         {{ product.productName }} ({{ product.category }})
         <ng-container *ngIf="displayCode">
           {{product.productCode}}

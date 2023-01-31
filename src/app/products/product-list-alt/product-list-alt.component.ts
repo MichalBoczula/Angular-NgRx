@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { catchError, EMPTY, Subject } from 'rxjs';
 import { ProductService } from '../product.service';
 import { getShowProductCode, State } from '../state/product.reducer';
+import * as ProductActions from '../state/product.actions';
+import { Product } from '../product';
 
 @Component({
   selector: 'pm-product-list',
@@ -57,8 +59,14 @@ export class ProductListAltComponent implements OnInit
   }
 
   checkChanged(): void {
-    this.store.dispatch({
-      type: 'toggleShowProductCode'
-    })
+    this.store.dispatch(ProductActions.toggleProductCode());
+  }
+
+  addNewProduct(): void {
+    this.store.dispatch(ProductActions.initializeCurrentProduct());
+  }
+
+  selectProduct(product: Product): void {
+    this.store.dispatch(ProductActions.setCurrentProduct({product}));
   }
 }
